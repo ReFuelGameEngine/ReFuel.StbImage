@@ -29,7 +29,7 @@ namespace Quik.Stb
         {
             NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), Resolver);
 
-            quik_stbi_failed_assert_store(Marshal.GetFunctionPointerForDelegate<FailedAssertProc>(FailedAssert));
+            // quik_stbi_failed_assert_store(Marshal.GetFunctionPointerForDelegate<FailedAssertProc>(FailedAssert));
         }
 
         private static IntPtr Resolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
