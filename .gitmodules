@@ -1,0 +1,6 @@
+[submodule "stb"]
+	path = stb
+	url = https://github.com/nothings/stb.git
+[submodule "Quik.Common"]
+	path = Quik.Common
+	url = https://git.mixedup.dev/QUIK/Quik.Common.git
