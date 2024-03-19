@@ -17,6 +17,8 @@ jobs:
         run: apt install -y docker.io docker-compose
       - name: Check repository out.
         uses: actions/checkout@v3
+      - name: "Where are my files????"
+        run: ls -la
       - name: Run Build Script
         run: docker-compose run build
         working-directory: ${{ gitea.workspace }}
