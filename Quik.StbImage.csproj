@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <RuntimeIdentifiers>linux-arm;linux-arm64;linux-x64;win-x86;win-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Nuget Properties. -->
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>Quik.StbImage</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>STBI Authors, H. Utku Maden</Authors>
+    <Description>
+      A C# wrapper for the ubiquitous Stb Image library.
+    </Description>
+  </PropertyGroup>
+
+  <!--
+    Because the .net build system is garbage of the purest quality, I need
+    to specify each runtime directory by itself or it won't be picked up as a
+    native specific to each platform and won't be included in the deps.json file
+    that determines a lot of load paths for projects.
+  -->
+  <ItemGroup>
+    <Content Include="runtimes/linux-arm/native/*.so">
+      <PackagePath>runtimes/linux-arm/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/linux-arm64/native/*.so">
+      <PackagePath>runtimes/linux-arm64/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest/</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/linux-x64/native/*.so">
+      <PackagePath>runtimes/linux-x64/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/linux-x86/native/*.so">
+      <PackagePath>runtimes/linux-x86/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/win-x64/native/*.dll">
+      <PackagePath>runtimes/win-x64/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/win-x86/native/*.dll">
+      <PackagePath>runtimes/win-x86/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

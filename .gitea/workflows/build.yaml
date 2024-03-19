@@ -1,0 +1,25 @@
+name: Build
+run-name: Building docker container.
+on:
+  workflow_dispatch:
+  push:
+    branches: stable
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: git.mixedup.dev/quik/docker-cross-compiler
+      env:
+        QUIK_API_KEY: "${{secrets.QUIK_API_KEY}}"
+      volumes:
+        - ${{ gitea.workspace }}:/home/quik/src
+    steps:
+      - name: Check repository out.
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Run Build Script
+        run: "./build_native.sh"
+      - name: Publish Package
+        run: "./publish.sh"

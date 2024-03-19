@@ -1,0 +1,30 @@
+-x
+    c
+-l
+    stbi
+--config
+    compatible-codegen
+    single-file
+    exclude-fnptr-codegen
+    generate-aggressive-inlining
+    generate-setslastsystemerror-attribute
+    unix-types
+--include-directory
+    ../lib
+--include-directory
+    ../Quik.StbImage
+--include-directory
+    /usr/lib/llvm-14/lib/clang/14.0.6/include
+--file
+    ../Quik.StbImage.redist/quik_stbi.h
+    ../lib/stb/stb_image.h
+--methodClassName
+    Stbi
+--namespace
+    Quik.Stb
+--output
+    Stbi.cs
+--prefixStrip
+    stbi_
+--with-type
+    FILE=void
