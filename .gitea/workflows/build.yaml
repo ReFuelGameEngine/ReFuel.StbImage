@@ -1,0 +1,22 @@
+name: Build
+run-name: Building docker container.
+on:
+  push:
+    branches: stable
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      QUIK_API_KEY: "${{secrets.QUIK_API_KEY}}"
+    steps:
+      - name: Update Package Repository.
+        run: apt update -y
+      - name: Gather dependencies.
+        run: apt install -y docker.io docker-compose
+      - name: Check repository out.
+        uses: actions/checkout@v3
+      - name: Run Build Script
+        run: docker-compose run build
+      - name: Upload NuGet Package
+        run: bash ./publish.sh
