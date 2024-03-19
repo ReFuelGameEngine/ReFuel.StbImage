@@ -1,0 +1,7 @@
+
+services:
+  build:
+    image: git.mixedup.dev/quik/docker-cross-compiler
+    command: "/home/quik/src/build_native.sh"
+    volumes:
+      - .:/home/quik/src
