@@ -1,6 +1,7 @@
 name: Build
 run-name: Building docker container.
 on:
+  workflow_dispatch:
   push:
     branches: stable
 
