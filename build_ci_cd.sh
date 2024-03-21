@@ -7,4 +7,5 @@ then
     exit 1
 fi
 
+pwd
 docker-compose run build && docker-compose run publish
