@@ -8,4 +8,4 @@ then
 fi
 
 dotnet nuget add source -n QUIK -u themixedupstuff -p "$QUIK_API_KEY" https://git.mixedup.dev/api/packages/QUIK/nuget/index.json
-dotnet nuget push -s QUIK
+dotnet nuget push -s QUIK bin/*/*.nupkg
