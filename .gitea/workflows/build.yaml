@@ -19,8 +19,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      #- name: "Where are my files????"
-      #  run: ls -la
+      - name: "Where are my files????"
+        run: ls -laR
       - name: Run Build Script
         run: docker-compose run build
         working-directory: ${{ gitea.workspace }}
