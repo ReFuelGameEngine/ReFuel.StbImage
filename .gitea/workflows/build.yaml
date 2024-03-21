@@ -20,7 +20,9 @@ jobs:
         with:
           submodules: recursive
       - name: "Where are my files????"
-        run: ls -laR
+        run: |
+          bash -c "pwd && ls -laR"
+          
       - name: Run Build Script
         run: docker-compose run build
         working-directory: ${{ gitea.workspace }}
