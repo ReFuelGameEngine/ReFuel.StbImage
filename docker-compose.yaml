@@ -3,6 +3,6 @@ version: "2"
 services:
   build:
     image: git.mixedup.dev/quik/docker-cross-compiler
-    command: "ls -laR && /home/quik/src/build_native.sh"
+    command: "ls -laR"
     volumes:
       - .:/home/quik/src
