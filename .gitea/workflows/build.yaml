@@ -8,16 +8,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      QUIK_API_KEY: "${{secrets.QUIK_API_KEY}}"
+    container:
+      image: git.mixedup.dev/quik/docker-cross-compiler
+      env:
+        QUIK_API_KEY: "${{secrets.QUIK_API_KEY}}"
+      volumes:
+        - ${{ gitea.workspace }}:/home/quik/src
     steps:
-      - name: Update Package Repository.
-        run: apt update -y
-      - name: Gather dependencies.
-        run: apt install -y docker.io docker-compose
       - name: Check repository out.
         uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Run Build Script
-        run: "bash ${{ gitea.workspace }}/build_ci_cd.sh"
+        run: "./build_native.sh"
+      - name: Publish Package
+        run: "./publish.sh"
