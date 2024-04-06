@@ -12,7 +12,7 @@
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Quik.StbImage</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
       A C# wrapper for the ubiquitous Stb Image library.
@@ -53,6 +53,16 @@
     </Content>
     <Content Include="runtimes/win-x86/native/*.dll">
       <PackagePath>runtimes/win-x86/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/osx-x64/native/*.dll">
+      <PackagePath>runtimes/osx-x64/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes/osx-arm64/native/*.dll">
+      <PackagePath>runtimes/osx-arm64/native/</PackagePath>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
