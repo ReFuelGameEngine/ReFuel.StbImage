@@ -5,7 +5,7 @@
     <Nullable>disable</Nullable>
     <LangVersion>7.3</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <RuntimeIdentifiers>linux-arm;linux-arm64;linux-x64;win-x86;win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>linux-arm;linux-arm64;linux-x64;win-x86;win-x64;osx-arm64;osx-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <PropertyGroup>
