@@ -5,6 +5,9 @@
 
 #define STBIDEF QEXTERN
 
+#define STBI_NO_THREAD_LOCALS 1
+#define STBI_NO_FAILURE_STRINGS 1
+#define STBI_THREAD_LOCAL
 #include "stb/stb_image.h"
 
 #endif
