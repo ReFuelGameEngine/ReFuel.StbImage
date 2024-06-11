@@ -17,6 +17,7 @@
     <Description>
       A C# wrapper for the ubiquitous Stb Image library.
     </Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <!--
@@ -26,6 +27,7 @@
     that determines a lot of load paths for projects.
   -->
   <ItemGroup>
+    <Content Include="README.md" Pack="true" PackagePath="/"/>
     <Content Include="runtimes/linux-arm/native/*.so">
       <PackagePath>runtimes/linux-arm/native/</PackagePath>
       <Pack>true</Pack>
