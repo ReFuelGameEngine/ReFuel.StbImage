@@ -18,7 +18,7 @@
       A C# wrapper for the ubiquitous Stb Image library.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>Quik.Common/assets/quik_ico_256.png</PackageIcon>
+    <PackageIcon>images\icon.png</PackageIcon>
   </PropertyGroup>
 
   <!--
