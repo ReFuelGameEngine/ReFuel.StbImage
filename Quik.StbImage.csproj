@@ -18,6 +18,7 @@
       A C# wrapper for the ubiquitous Stb Image library.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <!--
@@ -28,6 +29,7 @@
   -->
   <ItemGroup>
     <Content Include="README.md" Pack="true" PackagePath="/"/>
+    <None Include="Quik.Common/assets/quik_ico_256.png" Pack="true" PackagePath="images\icon.png"/>
     <Content Include="runtimes/linux-arm/native/*.so">
       <PackagePath>runtimes/linux-arm/native/</PackagePath>
       <Pack>true</Pack>
