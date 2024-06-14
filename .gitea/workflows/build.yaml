@@ -3,7 +3,7 @@ run-name: Building with docker container.
 on:
   workflow_dispatch:
   tags:
-    - *
+    - '*'
 
 jobs:
   build:
