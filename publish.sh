@@ -24,4 +24,4 @@ dotnet nuget add source \
     -n ReFuel -u "$NUGET_USER_NAME" -p "$REFUEL_API_KEY" \
     --store-password-in-clear-text \
     "$NUGET_INDEX"
-dotnet nuget push -s ReFeul bin/*/*.nupkg
+dotnet nuget push -s ReFuel bin/*/*.nupkg
