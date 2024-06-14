@@ -12,7 +12,7 @@ jobs:
     container:
       image: git.mixedup.dev/refuel/docker-cross-compiler
       env:
-        QUIK_API_KEY: "${{secrets.REFUEL_API_KEY}}"
+        REFUEL_API_KEY: "${{secrets.REFUEL_API_KEY}}"
         NUGET_USER_NAME: "${{vars.NUGET_USER_NAME}}"
         NUGET_INDEX: "${{vars.NUGET_INDEX}}"
       volumes:
