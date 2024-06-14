@@ -2,8 +2,9 @@ name: Build
 run-name: Building with docker container.
 on:
   workflow_dispatch:
-  tags:
-    - '*'
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
