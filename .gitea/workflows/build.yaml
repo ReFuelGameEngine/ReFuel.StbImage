@@ -1,19 +1,21 @@
 name: Build
-run-name: Building docker container.
+run-name: Building with docker container.
 on:
   workflow_dispatch:
-  push:
-    branches: stable
+  tags:
+    - *
 
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: git.mixedup.dev/quik/docker-cross-compiler
+      image: git.mixedup.dev/refuel/docker-cross-compiler
       env:
-        QUIK_API_KEY: "${{secrets.QUIK_API_KEY}}"
+        QUIK_API_KEY: "${{secrets.REFUEL_API_KEY}}"
+        NUGET_USER_NAME: "${{vars.NUGET_USER_NAME}}"
+        NUGET_INDEX: "${{vars.NUGET_INDEX}}"
       volumes:
-        - ${{ gitea.workspace }}:/home/quik/src
+        - ${{ gitea.workspace }}:/home/refuel/src
     steps:
       - name: Check repository out.
         uses: actions/checkout@v3
