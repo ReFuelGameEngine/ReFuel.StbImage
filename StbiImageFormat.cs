@@ -1,4 +1,4 @@
-namespace Quik.Stb
+namespace ReFuel.Stb
 {
     public enum StbiImageFormat
     {

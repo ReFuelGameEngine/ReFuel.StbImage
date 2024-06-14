@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Reflection;
 
-namespace Quik.Stb
+namespace ReFuel.Stb
 {
     public unsafe static partial class Stbi
     {
@@ -29,8 +29,6 @@ namespace Quik.Stb
         static Stbi()
         {
             NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), Resolver);
-
-            // quik_stbi_failed_assert_store(Marshal.GetFunctionPointerForDelegate<FailedAssertProc>(FailedAssert));
         }
 
         private static IntPtr Resolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
@@ -47,20 +45,6 @@ namespace Quik.Stb
             }
 
             return NativeLibrary.Load(libraryName);
-        }
-
-        private static void FailedAssert(byte *expression, byte *file, int line, byte *function)
-        {
-            string expr = expression == null ? string.Empty : Marshal.PtrToStringUTF8((IntPtr)expression);
-            string f    = file       == null ? string.Empty : Marshal.PtrToStringUTF8((IntPtr)file);
-            string func = function   == null ? string.Empty : Marshal.PtrToStringUTF8((IntPtr)function);
-
-            Exception ex = new Exception("Assert failed in native stbi code.");
-                ex.Data.Add("Expression", expr);
-                ex.Data.Add("File", f);
-                ex.Data.Add("Line", line);
-                ex.Data.Add("Function", func);
-            throw ex;
         }
     }
 }

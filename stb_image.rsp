@@ -10,18 +10,18 @@
     generate-setslastsystemerror-attribute
     unix-types
 --include-directory
-    ../lib
+    stb
 --include-directory
-    ../Quik.StbImage
+    .
 --include-directory
     /usr/lib/llvm-14/lib/clang/14.0.6/include
 --file
-    ../Quik.StbImage.redist/quik_stbi.h
-    ../lib/stb/stb_image.h
+    rf_stbi.h
+    stb/stb_image.h
 --methodClassName
     Stbi
 --namespace
-    Quik.Stb
+    ReFuel.Stb
 --output
     Stbi.cs
 --prefixStrip

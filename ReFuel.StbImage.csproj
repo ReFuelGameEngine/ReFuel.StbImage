@@ -6,16 +6,17 @@
     <LangVersion>7.3</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <RuntimeIdentifiers>linux-arm;linux-arm64;linux-x64;win-x86;win-x64;osx-arm64;osx-x64</RuntimeIdentifiers>
+    <RootNamespace>ReFuel.Stb</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>Quik.StbImage</PackageId>
+    <PackageId>ReFuel.StbImage</PackageId>
     <Version>1.1.3</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
-      A C# wrapper for the ubiquitous Stb Image library.
+      A C# wrapper for the ubiquitous stb_image.h and stb_image_write.h library.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>images\icon.png</PackageIcon>

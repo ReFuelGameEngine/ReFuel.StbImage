@@ -1,0 +1,30 @@
+-x
+    c
+-l
+    stbi
+--config
+    compatible-codegen
+    single-file
+    exclude-fnptr-codegen
+    generate-aggressive-inlining
+    generate-setslastsystemerror-attribute
+    unix-types
+--include-directory
+    stb
+--include-directory
+    .
+--include-directory
+    /usr/lib/llvm-14/lib/clang/14.0.6/include
+--file
+    rf_stbi.h
+    stb/stb_image_write.h
+--methodClassName
+    StbiWrite
+--namespace
+    ReFuel.Stb
+--output
+    StbiWrite.cs
+--prefixStrip
+    stbi_write_
+--with-type
+    FILE=void

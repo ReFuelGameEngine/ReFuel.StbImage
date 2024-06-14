@@ -2,15 +2,15 @@ version: "2"
 
 services:
   build:
-    image: git.mixedup.dev/quik/docker-cross-compiler
-    command: "/home/quik/src/build_native.sh"
+    image: git.mixedup.dev/refuel/docker-cross-compiler
+    command: "/home/refuel/src/build_native.sh"
     volumes:
-      - .:/home/quik/src
+      - .:/home/refuel/src
   publish:
-    image: git.mixedup.dev/quik/docker-cross-compiler
-    command: "/home/quik/src/publish.sh"
+    image: git.mixedup.dev/refuel/docker-cross-compiler
+    command: "/home/refuel/src/publish.sh"
     environment:
       QUIK_API_KEY: ${QUIK_API_KEY}
     volumes:
-      - .:/home/quik/src
+      - .:/home/refuel/src
       
