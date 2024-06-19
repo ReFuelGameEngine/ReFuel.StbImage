@@ -13,7 +13,7 @@
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.StbImage</PackageId>
-    <Version>1.1.0-rc0</Version>
+    <Version>2.0-rc</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
       A C# wrapper for the ubiquitous stb_image.h and stb_image_write.h library.
@@ -21,6 +21,13 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>images\icon.png</PackageIcon>
+    <PackageProjectUrl>https://refuel.mixedup.dev/docs/ReFuel.StbImage.html</PackageProjectUrl>
+    <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReFuel.StbImage</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>stb; stb_image; stbi; image; load; save; read; write</PackageTags>
+    <PackageReleaseNotes># 2.0.0
+* Exposed stbi_image_write.h
+* Moved native function calls to ReFuel.Stb.Native</PackageReleaseNotes>
   </PropertyGroup>
 
   <!--
@@ -30,8 +37,8 @@
     that determines a lot of load paths for projects.
   -->
   <ItemGroup>
-    <Content Include="*.md" Pack="true" PackagePath="/"/>
-    <None Include="rf_stbimage.png" Pack="true" PackagePath="images\icon.png"/>
+    <Content Include="*.md" Pack="true" PackagePath="/" />
+    <None Include="rf_stbimage.png" Pack="true" PackagePath="images\icon.png" />
     <Content Include="runtimes/linux-arm/native/*.so">
       <PackagePath>runtimes/linux-arm/native/</PackagePath>
       <Pack>true</Pack>
