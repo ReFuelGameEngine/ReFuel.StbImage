@@ -157,7 +157,7 @@ namespace ReFuel.Stb
         /// <remarks>
         /// -1 for auto, 0 through 5 to pick a filter. Higher is more. Not thread safe.
         /// </remarks>
-        public int WriteForcePngFilter
+        public static int WriteForcePngFilter
         {
             get => Stbi.write_force_png_filter;
             set
@@ -177,7 +177,7 @@ namespace ReFuel.Stb
         /// <remarks>
         /// Higher is more. Defaults to 8. Not thread safe.
         /// </remarks>
-        public int WritePngCompressionLevel
+        public static int WritePngCompressionLevel
         {
             get => Stbi.write_png_compression_level;
             set => Stbi.write_png_compression_level = value;
@@ -189,7 +189,7 @@ namespace ReFuel.Stb
         /// <remarks>
         /// Not thread safe.
         /// </remarks>
-        public bool WriteTgaEnableRLE
+        public static bool WriteTgaEnableRLE
         {
             get => Stbi.write_tga_with_rle != 0;
             set => Stbi.write_tga_with_rle = value ? 1 : 0;
