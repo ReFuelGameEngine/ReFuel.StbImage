@@ -1,13 +1,34 @@
+using ReFuel.Stb.Native;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
 namespace ReFuel.Stb
 {
+    /// <summary>
+    /// Pointer to STBI stream read function.
+    /// </summary>
+    /// <param name="userdata">User provided userdata pointer.</param>
+    /// <param name="buffer">C array to read into.</param>
+    /// <param name="count">Size of the C array in bytes.</param>
+    /// <returns>The number of bytes read from the stream.</returns>
     public unsafe delegate int StbiReadProc(void *userdata, byte* buffer, int count);
+    /// <summary>
+    /// Pointer to STBI stream skip function.
+    /// </summary>
+    /// <param name="userdata">User provided userdata pointer.</param>
+    /// <param name="count">Number of bytes to skip.</param>
     public unsafe delegate void StbiSkipProc(void *userdata, int count);
+    /// <summary>
+    /// Pointer to STBI stream end of file function.
+    /// </summary>
+    /// <param name="userdata">User provided userdata pointer.</param>
+    /// <returns>Non-zero value if the end of the stream has been reached.</returns>
     public unsafe delegate int StbiEofProc(void *userdata);
 
+    /// <summary>
+    /// An easy to use stream wrapper for use with STBI image load functions.
+    /// </summary>
     public unsafe class StbiStreamWrapper : IDisposable
     {
         private readonly stbi_io_callbacks _callbacks;
@@ -74,7 +95,11 @@ namespace ReFuel.Stb
         }
     }
 
-    internal struct StbiWriteStreamWrapper
+    /// <summary>
+    /// An easy to use stream wrapper for STBI image write functions.
+    /// </summary>
+    /// <remarks>Keep struct alive for the duration of the write operation.</remarks>
+    public struct StbiWriteStreamWrapper
     {
         private readonly Stream _stream;
         private readonly StbiWriteProc _cb;

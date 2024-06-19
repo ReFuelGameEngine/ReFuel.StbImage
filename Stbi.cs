@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace ReFuel.Stb
+namespace ReFuel.Stb.Native
 {
     public enum StbiEnum : uint
     {

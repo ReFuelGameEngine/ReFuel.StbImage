@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace ReFuel.Stb
+namespace ReFuel.Stb.Native
 {
+    /// <summary>
+    /// Procedure to STBI image write function.
+    /// </summary>
+    /// <param name="context">User provided context pointer.</param>
+    /// <param name="data">C Array of data to write.</param>
+    /// <param name="size">Size of the C array in bytes.</param>
     public unsafe delegate void StbiWriteProc(void* context, void* data, int size);
 
     public unsafe partial class Stbi
     {
         private static readonly int* _tga_with_rle_ptr;
         private static readonly int* _png_compression_level_ptr;
-        private static readonly int* _forced_png_filter_ptr;
+        private static readonly int* _force_png_filter_ptr;
 
         public static int write_tga_with_rle
         {
@@ -25,8 +31,8 @@ namespace ReFuel.Stb
 
         public static int write_force_png_filter
         {
-            get => *_forced_png_filter_ptr;
-            set => *_forced_png_filter_ptr = value;
+            get => *_force_png_filter_ptr;
+            set => *_force_png_filter_ptr = value;
         }
 
         [DllImport("stbi", CallingConvention = CallingConvention.Cdecl, EntryPoint = "stbi_write_png_to_func")]

@@ -1,5 +1,10 @@
+using ReFuel.Stb.Native;
+
 namespace ReFuel.Stb
 {
+    /// <summary>
+    /// Enumeration of supported STBI image formats.
+    /// </summary>
     public enum StbiImageFormat
     {
         Default     = (int)StbiEnum.STBI_default,
