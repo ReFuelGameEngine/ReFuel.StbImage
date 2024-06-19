@@ -98,13 +98,13 @@ namespace ReFuel.Stb
     /// <summary>
     /// An easy to use stream wrapper for STBI image write functions.
     /// </summary>
-    /// <remarks>Keep struct alive for the duration of the write operation.</remarks>
-    public struct StbiWriteStreamWrapper
+    /// <remarks>Keep object alive for the duration of the write operation.</remarks>
+    public class StbiWriteStreamWrapper
     {
         private readonly Stream _stream;
         private readonly StbiWriteProc _cb;
 
-        public IntPtr Callback => Marshal.GetFunctionPointerForDelegate(_cb);
+        public IntPtr Callback { get; }
 
         public StbiWriteStreamWrapper(Stream stream)
         {
@@ -113,6 +113,7 @@ namespace ReFuel.Stb
             {
                 _cb = WriteCb;
             }
+            Callback = Marshal.GetFunctionPointerForDelegate(_cb);
         }
 
         private unsafe void WriteCb(void *context, void *data, int size)
