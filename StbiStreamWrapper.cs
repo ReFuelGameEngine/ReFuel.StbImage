@@ -10,13 +10,16 @@ namespace ReFuel.Stb
 
     public unsafe class StbiStreamWrapper : IDisposable
     {
-        private Stream _stream;
-        private bool _keepOpen;
+        private readonly stbi_io_callbacks _callbacks;
+        private readonly Stream _stream;
+        private readonly bool _keepOpen;
         private bool _isDisposed;
 
         private StbiReadProc _readCb;
         private StbiSkipProc _skipCb;
         private StbiEofProc _eofCb;
+
+        public ref readonly stbi_io_callbacks Callbacks => ref _callbacks;
 
         public StbiStreamWrapper(Stream stream, bool keepOpen = false)
         {
@@ -28,6 +31,11 @@ namespace ReFuel.Stb
             _readCb = ReadCb;
             _skipCb = SkipCb;
             _eofCb = EofCb;
+
+            _callbacks = default;
+            _callbacks.read = Marshal.GetFunctionPointerForDelegate<StbiReadProc>(_readCb);
+            _callbacks.skip = Marshal.GetFunctionPointerForDelegate<StbiSkipProc>(_skipCb);
+            _callbacks.eof = Marshal.GetFunctionPointerForDelegate<StbiEofProc>(_eofCb);
         }
 
         public void CreateCallbacks(out stbi_io_callbacks cb)
@@ -64,5 +72,29 @@ namespace ReFuel.Stb
 
             _isDisposed = true;
         }
+    }
+
+    internal struct StbiWriteStreamWrapper
+    {
+        private readonly Stream _stream;
+        private readonly StbiWriteProc _cb;
+
+        public IntPtr Callback => Marshal.GetFunctionPointerForDelegate(_cb);
+
+        public StbiWriteStreamWrapper(Stream stream)
+        {
+            _stream = stream;
+            unsafe
+            {
+                _cb = WriteCb;
+            }
+        }
+
+        private unsafe void WriteCb(void *context, void *data, int size)
+        {
+            _stream.Write(new ReadOnlySpan<byte>((byte*)data, size));
+        }
+
+        public static implicit operator IntPtr(in StbiWriteStreamWrapper wrapper) => wrapper.Callback;
     }
 }
