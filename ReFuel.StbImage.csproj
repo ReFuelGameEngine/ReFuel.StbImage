@@ -1,19 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <RuntimeIdentifiers>linux-arm;linux-arm64;linux-x64;win-x86;win-x64;osx-arm64;osx-x64</RuntimeIdentifiers>
     <RootNamespace>ReFuel.Stb</RootNamespace>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <PropertyGroup>
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.StbImage</PackageId>
-    <Version>2.0</Version>
+    <Version>2.0.1</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
       A C# wrapper for the ubiquitous stb_image.h and stb_image_write.h library.
@@ -25,7 +26,10 @@
     <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReFuel.StbImage</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>stb; stb_image; stbi; image; load; save; read; write</PackageTags>
-    <PackageReleaseNotes># 2.0.0
+    <PackageReleaseNotes># 2.0.1
+* Enabled optimizations across the board for native and managed assemblies.
+
+# 2.0.0
 * Exposed stbi_image_write.h
 * Moved native function calls to ReFuel.Stb.Native</PackageReleaseNotes>
   </PropertyGroup>
