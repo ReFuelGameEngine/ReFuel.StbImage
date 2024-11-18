@@ -14,7 +14,7 @@
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.StbImage</PackageId>
-    <Version>2.1.0-rc.0</Version>
+    <Version>2.1.0</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
       A C# wrapper for the ubiquitous stb_image.h and stb_image_write.h library.
