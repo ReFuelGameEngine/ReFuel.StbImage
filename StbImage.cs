@@ -33,6 +33,7 @@ namespace ReFuel.Stb
         /// Internal image format.
         /// </summary>
         public StbiImageFormat Format { get; }
+
         /// <summary>
         /// True if the image is a floating point image.
         /// </summary>
@@ -66,7 +67,7 @@ namespace ReFuel.Stb
                 StbiImageFormat.GreyAlpha => 2,
                 StbiImageFormat.Rgb => 3,
                 StbiImageFormat.Rgba => 4,
-                _ => throw new Exception("unkown image format")
+                _ => throw new Exception("unknown image format")
             } * (IsFloat ? sizeof(float) : sizeof(byte));
 
             return new ReadOnlySpan<T>((T*)ImagePointer, Width * Height * sz / sizeof(T));
@@ -80,7 +81,7 @@ namespace ReFuel.Stb
         /// Incurs a conversion cost if the image format is not a byte format. Affected by non-thread safe global options.
         /// </remarks>
         public void WritePng(Stream dest) => WritePng(AsSpan<byte>(), Width, Height, Format, dest, isFloat: IsFloat);
-        
+
         /// <summary>
         /// Write image to a BMP file.
         /// </summary>
@@ -89,7 +90,7 @@ namespace ReFuel.Stb
         /// Incurs a conversion cost if the image format is not a byte format. Affected by non-thread safe global options.
         /// </remarks>
         public void WriteBmp(Stream dest) => WriteBmp(AsSpan<byte>(), Width, Height, Format, dest, isFloat: IsFloat);
-        
+
         /// <summary>
         /// Write image to a TGA file.
         /// </summary>
@@ -98,7 +99,7 @@ namespace ReFuel.Stb
         /// Incurs a conversion cost if the image format is not a byte format. Ignores alpha channel. Affected by non-thread safe global options.
         /// </remarks>
         public void WriteTga(Stream dest) => WriteTga(AsSpan<byte>(), Width, Height, Format, dest, isFloat: IsFloat);
-        
+
         /// <summary>
         /// Write image to a PNG file.
         /// </summary>
@@ -107,11 +108,12 @@ namespace ReFuel.Stb
         /// Incurs a conversion cost if the image format is not a float format. Affected by non-thread safe global options.
         /// </remarks>
         public void WriteHdr(Stream dest) => WriteHdr(AsSpan<byte>(), Width, Height, Format, dest, isFloat: IsFloat);
-        
+
         /// <summary>
         /// Write image to a PNG file.
         /// </summary>
         /// <param name="dest">The destination stream.</param>
+        /// <param name="quality">The JPEG quality factor.</param>
         /// <remarks>
         /// Incurs a conversion cost if the image format is not a byte format. Ignores alpha channel. Affected by non-thread safe global options.
         /// </remarks>
@@ -201,13 +203,13 @@ namespace ReFuel.Stb
         /// <param name="image">The resulting image.</param>
         /// <param name="stream">Source stream.</param>
         /// <param name="format">The desired image format.</param>
+        /// <param name="asFloat">The buffer uses floating point pixels if true.</param>
         /// <returns>True on success.</returns>
         public static bool TryLoad([NotNullWhen(true)] out StbImage? image, Stream stream, StbiImageFormat format = StbiImageFormat.Default, bool asFloat = false)
         {
             int x, y, iFormat;
             StbiStreamWrapper wrapper = new StbiStreamWrapper(stream, true);
             wrapper.CreateCallbacks(out stbi_io_callbacks cb);
-
             stream.Position = 0;
             IntPtr imagePtr;
             if (asFloat)
@@ -237,6 +239,7 @@ namespace ReFuel.Stb
         /// <param name="image">The resulting image.</param>
         /// <param name="span">Source memory span.</param>
         /// <param name="format">The desired image format.</param>
+        /// <param name="asFloat">The buffer uses floating point pixels if true.</param>
         /// <returns>True on success.</returns>
         public static bool TryLoad([NotNullWhen(true)] out StbImage? image, ReadOnlySpan<byte> span, StbiImageFormat format = StbiImageFormat.Default, bool asFloat = false)
         {
@@ -271,6 +274,7 @@ namespace ReFuel.Stb
         /// </summary>
         /// <param name="stream">The stream to load from.</param>
         /// <param name="format">The desired image format.</param>
+        /// <param name="asFloat">The buffer uses floating point pixels if true.</param>
         /// <returns>The image object.</returns>
         public static StbImage Load(Stream stream, StbiImageFormat format = StbiImageFormat.Default, bool asFloat = false)
         {
@@ -288,6 +292,7 @@ namespace ReFuel.Stb
         /// </summary>
         /// <param name="span">The span of memory to load from.</param>
         /// <param name="format">The desired image format.</param>
+        /// <param name="asFloat">The buffer uses floating point pixels if true.</param>
         /// <returns>The image object.</returns>
         public static StbImage Load(ReadOnlySpan<byte> span, StbiImageFormat format = StbiImageFormat.Default, bool asFloat = false)
         {
@@ -389,7 +394,7 @@ namespace ReFuel.Stb
         /// <param name="data">Span of pixel data.</param>
         /// <param name="width">Width of the pixel data in pixels.</param>
         /// <param name="height">Height of the pixel data in pixels.</param>
-        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat.StbiImageFormat"/>.</param>
+        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat"/>.</param>
         /// <param name="destination">The destination stream.</param>
         /// <param name="isFloat">True if the pixel format in data is a floating point format.</param>
         /// <remarks>
@@ -425,7 +430,7 @@ namespace ReFuel.Stb
         /// <param name="data">Span of pixel data.</param>
         /// <param name="width">Width of the pixel data in pixels.</param>
         /// <param name="height">Height of the pixel data in pixels.</param>
-        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat.StbiImageFormat"/>.</param>
+        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat"/>.</param>
         /// <param name="destination">The destination stream.</param>
         /// <param name="isFloat">True if the pixel format in data is a floating point format.</param>
         /// <remarks>
@@ -461,7 +466,7 @@ namespace ReFuel.Stb
         /// <param name="data">Span of pixel data.</param>
         /// <param name="width">Width of the pixel data in pixels.</param>
         /// <param name="height">Height of the pixel data in pixels.</param>
-        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat.StbiImageFormat"/>.</param>
+        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat"/>.</param>
         /// <param name="destination">The destination stream.</param>
         /// <param name="isFloat">True if the pixel format in data is a floating point format.</param>
         /// <remarks>
@@ -497,7 +502,7 @@ namespace ReFuel.Stb
         /// <param name="data">Span of pixel data.</param>
         /// <param name="width">Width of the pixel data in pixels.</param>
         /// <param name="height">Height of the pixel data in pixels.</param>
-        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat.StbiImageFormat"/>.</param>
+        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat"/>.</param>
         /// <param name="destination">The destination stream.</param>
         /// <param name="isFloat">True if the pixel format in data is a floating point format.</param>
         /// <remarks>
@@ -533,8 +538,9 @@ namespace ReFuel.Stb
         /// <param name="data">Span of pixel data.</param>
         /// <param name="width">Width of the pixel data in pixels.</param>
         /// <param name="height">Height of the pixel data in pixels.</param>
-        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat.StbiImageFormat"/>.</param>
+        /// <param name="format">Color format of the pixel data. Must not be <see cref="StbiImageFormat"/>.</param>
         /// <param name="destination">The destination stream.</param>
+        /// <param name="quality">The JPEG quality factor.</param>
         /// <param name="isFloat">True if the pixel format in data is a floating point format.</param>
         /// <remarks>
         /// This will incur a conversion cost if the pixel format is not a byte format. Ignores the alpha channel. Affected by global non-thread safe options.
