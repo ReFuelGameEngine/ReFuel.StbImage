@@ -9,6 +9,7 @@ namespace ReFuel.Stb.Native
     /// <param name="context">User provided context pointer.</param>
     /// <param name="data">C Array of data to write.</param>
     /// <param name="size">Size of the C array in bytes.</param>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void StbiWriteProc(void* context, void* data, int size);
 
     public unsafe partial class Stbi
@@ -24,7 +25,7 @@ namespace ReFuel.Stb.Native
         }
 
         public static int write_png_compression_level
-        { 
+        {
             get => *_png_compression_level_ptr;
             set => *_png_compression_level_ptr = value;
         }
