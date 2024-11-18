@@ -209,19 +209,19 @@ namespace ReFuel.Stb
         {
             int x, y, iFormat;
             StbiStreamWrapper wrapper = new StbiStreamWrapper(stream, true);
-            GCHandle gch = GCHandle.Alloc(wrapper, GCHandleType.Normal);
-            wrapper.CreateCallbacks(out stbi_io_callbacks cb);
             stream.Position = 0;
             IntPtr imagePtr;
-            if (asFloat)
+            fixed (stbi_io_callbacks* cb = &wrapper.Callbacks)
             {
-                imagePtr = (IntPtr)Stbi.loadf_from_callbacks(&cb, (void*)(IntPtr)gch, &x, &y, &iFormat, (int)format);
+                if (asFloat)
+                {
+                    imagePtr = (IntPtr)Stbi.loadf_from_callbacks(cb, null, &x, &y, &iFormat, (int)format);
+                }
+                else
+                {
+                    imagePtr = (IntPtr)Stbi.load_from_callbacks(cb, null, &x, &y, &iFormat, (int)format);
+                }
             }
-            else
-            {
-                imagePtr = (IntPtr)Stbi.load_from_callbacks(&cb, (void*)(IntPtr)gch, &x, &y, &iFormat, (int)format);
-            }
-            gch.Free();
 
             if (imagePtr != IntPtr.Zero)
             {
@@ -319,10 +319,12 @@ namespace ReFuel.Stb
         {
             int x, y, iFormat;
             StbiStreamWrapper wrapper = new StbiStreamWrapper(stream, true);
-            wrapper.CreateCallbacks(out stbi_io_callbacks cb);
-
+            int result;
             stream.Position = 0;
-            int result = Stbi.info_from_callbacks(&cb, null, &x, &y, &iFormat);
+            fixed (stbi_io_callbacks* cb = &wrapper.Callbacks)
+            {
+                result = Stbi.info_from_callbacks(cb, null, &x, &y, &iFormat);
+            }
 
             width = x;
             height = y;

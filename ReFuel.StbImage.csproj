@@ -14,7 +14,7 @@
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.StbImage</PackageId>
-    <Version>2.0.2-rc.1</Version>
+    <Version>2.1.0-rc.0</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
       A C# wrapper for the ubiquitous stb_image.h and stb_image_write.h library.
@@ -26,10 +26,10 @@
     <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReFuel.StbImage</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>stb; stb_image; stbi; image; load; save; read; write</PackageTags>
-    <PackageReleaseNotes># 2.0.2
+    <PackageReleaseNotes># 2.1.0 (ABI BRAKING)
 * Fixed calling convention of unmanaged function pointers. (Thanks NogginBops!)
-* Allocating a GC handle to StbiStreamWrapper class and passing it as userdata into stbi in order to prevent
-  the object from being prematurely collected by the garbage collector when optimizations are enabled in Release mode.
+* Modified StbiStreamWrapper in order to fixed backing delegates of function pointers from being prematurely collected 
+  by release mode JIT and the GC. StbiStreamWrapper.Callbacks is now a readonly field. (ABI BREAKING)
 
 # 2.0.1
 * Enabled optimizations across the board for native and managed assemblies.
@@ -56,7 +56,7 @@
     <Content Include="runtimes/linux-arm64/native/*.so">
       <PackagePath>runtimes/linux-arm64/native/</PackagePath>
       <Pack>true</Pack>
-      <CopyToOutputDirectory>PreserveNewest/</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="runtimes/linux-x64/native/*.so">
       <PackagePath>runtimes/linux-x64/native/</PackagePath>

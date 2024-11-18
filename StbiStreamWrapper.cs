@@ -32,11 +32,12 @@ namespace ReFuel.Stb
     public unsafe delegate int StbiEofProc(void *userdata);
 
     /// <summary>
-    /// An easy to use stream wrapper for use with STBI image load functions.
+    /// An easy-to-use stream wrapper for use with STBI image load functions.
     /// </summary>
     public unsafe class StbiStreamWrapper : IDisposable
     {
-        private readonly stbi_io_callbacks _callbacks;
+        public readonly stbi_io_callbacks Callbacks;
+
         private readonly Stream _stream;
         private readonly bool _keepOpen;
         private bool _isDisposed;
@@ -44,8 +45,6 @@ namespace ReFuel.Stb
         private StbiReadProc _readCb;
         private StbiSkipProc _skipCb;
         private StbiEofProc _eofCb;
-
-        public ref readonly stbi_io_callbacks Callbacks => ref _callbacks;
 
         public StbiStreamWrapper(Stream stream, bool keepOpen = false)
         {
@@ -58,18 +57,10 @@ namespace ReFuel.Stb
             _skipCb = SkipCb;
             _eofCb = EofCb;
 
-            _callbacks = default;
-            _callbacks.read = Marshal.GetFunctionPointerForDelegate<StbiReadProc>(_readCb);
-            _callbacks.skip = Marshal.GetFunctionPointerForDelegate<StbiSkipProc>(_skipCb);
-            _callbacks.eof = Marshal.GetFunctionPointerForDelegate<StbiEofProc>(_eofCb);
-        }
-
-        public void CreateCallbacks(out stbi_io_callbacks cb)
-        {
-            cb = default;
-            cb.read = Marshal.GetFunctionPointerForDelegate<StbiReadProc>(_readCb);
-            cb.skip = Marshal.GetFunctionPointerForDelegate<StbiSkipProc>(_skipCb);
-            cb.eof = Marshal.GetFunctionPointerForDelegate<StbiEofProc>(_eofCb);
+            Callbacks = default;
+            Callbacks.read = Marshal.GetFunctionPointerForDelegate<StbiReadProc>(_readCb);
+            Callbacks.skip = Marshal.GetFunctionPointerForDelegate<StbiSkipProc>(_skipCb);
+            Callbacks.eof = Marshal.GetFunctionPointerForDelegate<StbiEofProc>(_eofCb);
         }
 
         private int ReadCb(void *userdata, byte* buffer, int count)
