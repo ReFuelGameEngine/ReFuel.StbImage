@@ -14,7 +14,7 @@
     <!-- Nuget Properties. -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.StbImage</PackageId>
-    <Version>2.0.2-rc.0</Version>
+    <Version>2.0.2-rc.1</Version>
     <Authors>STBI Authors, H. Utku Maden</Authors>
     <Description>
       A C# wrapper for the ubiquitous stb_image.h and stb_image_write.h library.
@@ -27,7 +27,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>stb; stb_image; stbi; image; load; save; read; write</PackageTags>
     <PackageReleaseNotes># 2.0.2
-* Fixed calling convention related execution engine exception for the Windows platform.
+* Fixed calling convention of unmanaged function pointers. (Thanks NogginBops!)
+* Allocating a GC handle to StbiStreamWrapper class and passing it as userdata into stbi in order to prevent
+  the object from being prematurely collected by the garbage collector when optimizations are enabled in Release mode.
 
 # 2.0.1
 * Enabled optimizations across the board for native and managed assemblies.

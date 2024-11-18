@@ -209,17 +209,19 @@ namespace ReFuel.Stb
         {
             int x, y, iFormat;
             StbiStreamWrapper wrapper = new StbiStreamWrapper(stream, true);
+            GCHandle gch = GCHandle.Alloc(wrapper, GCHandleType.Normal);
             wrapper.CreateCallbacks(out stbi_io_callbacks cb);
             stream.Position = 0;
             IntPtr imagePtr;
             if (asFloat)
             {
-                imagePtr = (IntPtr)Stbi.loadf_from_callbacks(&cb, null, &x, &y, &iFormat, (int)format);
+                imagePtr = (IntPtr)Stbi.loadf_from_callbacks(&cb, (void*)(IntPtr)gch, &x, &y, &iFormat, (int)format);
             }
             else
             {
-                imagePtr = (IntPtr)Stbi.load_from_callbacks(&cb, null, &x, &y, &iFormat, (int)format);
+                imagePtr = (IntPtr)Stbi.load_from_callbacks(&cb, (void*)(IntPtr)gch, &x, &y, &iFormat, (int)format);
             }
+            gch.Free();
 
             if (imagePtr != IntPtr.Zero)
             {
