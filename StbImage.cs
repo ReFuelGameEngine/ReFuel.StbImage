@@ -149,7 +149,7 @@ namespace ReFuel.Stb
         /// According to the stb_image documentation, only iPhone PNG images
         /// can come with premultiplied alpha.
         /// </remarks>
-        public static bool UnpremultiplyOnLoad { set => Stbi.set_unpremultiply_on_load(1); }
+        public static bool UnpremultiplyOnLoad { set => Stbi.set_unpremultiply_on_load(value ? 1 : 0); }
 
         /// <summary>
         /// Force a filter on PNG filter when saving.
