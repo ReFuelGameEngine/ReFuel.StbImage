@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReFuel.StbImage", "ReFuel.StbImage\ReFuel.StbImage.csproj", "{EB001CC8-6821-4579-BD5D-27C56A3C121E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReFuel.StbImage.Viewer", "ReFuel.StbImage.Viewer\ReFuel.StbImage.Viewer.csproj", "{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{EB001CC8-6821-4579-BD5D-27C56A3C121E}.Release|x64.Build.0 = Release|Any CPU
 		{EB001CC8-6821-4579-BD5D-27C56A3C121E}.Release|x86.ActiveCfg = Release|Any CPU
 		{EB001CC8-6821-4579-BD5D-27C56A3C121E}.Release|x86.Build.0 = Release|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Debug|x64.Build.0 = Debug|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Debug|x86.Build.0 = Debug|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Release|x64.ActiveCfg = Release|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Release|x64.Build.0 = Release|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Release|x86.ActiveCfg = Release|Any CPU
+		{4CFB8D5B-8CE9-46EE-A34B-0D61693BDE50}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
