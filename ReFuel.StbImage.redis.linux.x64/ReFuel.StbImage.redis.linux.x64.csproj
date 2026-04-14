@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../etc/ReFuel.StbImage.Common.props"/>
+
+  <PropertyGroup>
+    <!-- Nuget Properties. -->
+    <PackageId>ReFuel.StbImage.redis.linux.x64</PackageId>
+    <Version>1.0.0-rc.1</Version>
+    <Description>
+      StbImage distribution for Linux x64.
+    </Description>
+    <PackageReleaseNotes>* Initial release.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="runtimes/linux-x64/native/*.so">
+      <PackagePath>runtimes/linux-x64/native/</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
