@@ -1,6 +1,8 @@
 [submodule "stb"]
 	path = stb
 	url = https://github.com/nothings/stb.git
+	branch = master
 [submodule "docker-cross-compiler"]
 	path = docker-cross-compiler
 	url = https://git.mixedup.dev/ReFuel/docker-cross-compiler
+	branch = stable
