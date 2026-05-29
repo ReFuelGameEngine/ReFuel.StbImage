@@ -28,5 +28,6 @@ jobs:
         run: "./publish.sh"
       - name: Upload Artifacts
         uses: actions/upload-artifact
-        name: packages
-        path: "bin/*.nupkg"
+        with:
+          name: packages
+          path: "bin/*.nupkg"
