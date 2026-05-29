@@ -26,3 +26,7 @@ jobs:
         run: "./build_native.sh"
       - name: Publish Package
         run: "./publish.sh"
+      - name: Upload Artifacts
+        uses: actions/upload-artifact
+        name: packages
+        path: "bin/*.nupkg"
