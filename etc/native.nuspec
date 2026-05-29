@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+    <id>ReFuel.StbImage.redis.$rid$</id>
+    <version>$version$</version>
+    <authors>STB Authors, H. Utku Maden</authors>
+    <license type="expression">MIT</license>
+    <readme>README.md</readme>
+    <icon>images\icon.png</icon>
+
+    <description>Native dependencies for ReFuel.StbImage</description>
+    <repository type="git" url="https://github.com/ReFuelGameEngine/ReFuel.StbImage" />
+  </metadata>
+  <files>
+    <file src="..\runtimes\$rid$\native\$dllname$" target="runtimes\$rid$\native\$dllname$" />
+    <file src="..\README.md" target="README.md"/>
+    <file src="..\LICENSE.md" target="LICENSE.md"/>
+    <file src="..\rf_stbimage.png" target="images\icon.png"/>
+  </files>
+</package>

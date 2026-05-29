@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- <ProjectReference Include="..\ReFuel.StbImage\ReFuel.StbImage.csproj" /> -->
     <PackageReference Include="ReFuel.StbImage" Version="2.1.0"/>
     <PackageReference Include="OpenTK" Version="4.9.4" /> 
     <EmbeddedResource Include="../rf_stbimage.png" LogicalName="default.png"/>

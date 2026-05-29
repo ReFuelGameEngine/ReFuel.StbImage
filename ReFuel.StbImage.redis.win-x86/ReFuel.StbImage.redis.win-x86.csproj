@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../etc/ReFuel.StbImage.Common.props"/>
+
+  <PropertyGroup>
+    <!-- Nuget Properties. -->
+    <Version>1.0.0$(VersionSuffix)</Version>
+    <PackageReleaseNotes>* Initial release.</PackageReleaseNotes>
+    <NoBuild>true</NoBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NuspecFile>../etc/native.nuspec</NuspecFile>
+    <NuspecProperties>version=$(Version);rid=win-x86;dllname=libstbi.dll</NuspecProperties>
+  </PropertyGroup>
+</Project>
