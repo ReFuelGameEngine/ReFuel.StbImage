@@ -2,6 +2,12 @@ name: Build
 run-name: Building with docker container.
 on:
   workflow_dispatch:
+      inputs:
+      version_suffix:
+        description: "Optional version suffix."
+        required: false
+        type: string
+        default: -rc.1
   push:
     tags:
       - '*'
@@ -15,6 +21,7 @@ jobs:
         REFUEL_API_KEY: "${{secrets.REFUEL_API_KEY}}"
         NUGET_USER_NAME: "${{vars.NUGET_USER_NAME}}"
         NUGET_INDEX: "${{vars.NUGET_INDEX}}"
+        VersionSuffix: "${{inputs.version_suffix}}"
       volumes:
         - ${{ gitea.workspace }}:/home/refuel/src
     steps:
