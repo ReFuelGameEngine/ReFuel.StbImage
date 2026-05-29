@@ -12,7 +12,7 @@ DST=$PWD    ./docker-cross-compiler/sh/build_native.sh $PWD osx-x64
 DST=$PWD    ./docker-cross-compiler/sh/build_native.sh $PWD win-x64
 DST=$PWD    ./docker-cross-compiler/sh/build_native.sh $PWD win-x86
 
-for d in ReFuel.StbImage.redis*(/); do
+for d in ReFuel.StbImage.redis*; do
     dotnet pack "$d"
 done
 
